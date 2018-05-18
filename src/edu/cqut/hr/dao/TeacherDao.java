@@ -26,7 +26,7 @@ public class TeacherDao {
 		Connection connection = DBUtil.getConnection();
 		String sql = " INSERT INTO teacher" +
 		        "(id,name,sex,birthday,salary,college,major)" + 
-				"valuse(" +
+				"values(" +
 		        "?,?,?,?,?,?,?) ";
 		PreparedStatement ptmt = connection.prepareStatement(sql);
 	
@@ -64,6 +64,7 @@ public class TeacherDao {
 		ptmt.setFloat(4, T.getSalary());
 		ptmt.setString(5, T.getCollege());
 		ptmt.setString(6, T.getMajor());
+		ptmt.setInt(7, T.getId());
 		ptmt.execute();
 	}
 	
@@ -106,7 +107,7 @@ public class TeacherDao {
 			T.setBirthday(rs.getDate("birthday"));
 			T.setSalary(rs.getFloat("salary"));
 			T.setCollege(rs.getString("college"));
-			T.setMajor(rs.getString("marjor"));
+			T.setMajor(rs.getString("major"));
 		}
 		return T;
 	}
