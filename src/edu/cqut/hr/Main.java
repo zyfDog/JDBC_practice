@@ -33,7 +33,11 @@ public class Main {
 				break;
     		}
     		if(command == 7)
+    		{
+    			TeacherView.exit();
     			break;
+    		}
+    			
     	}
 	}
 }
