@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import edu.cqut.hr.db.DBUtil;
 import edu.cqut.hr.model.Teacher;
@@ -110,5 +111,36 @@ public class TeacherDao {
 			T.setMajor(rs.getString("major"));
 		}
 		return T;
+	}
+	
+	public List<Teacher> query(List<Map<String, Object>> params) throws Exception{
+		List<Teacher> result = new ArrayList<Teacher>();
+		
+		Connection connection = DBUtil.getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM teacher WHERE 1=1 ");
+		
+		if(params != null && params.size()>0) {
+			for(int i = 0; i < params.size(); i++) {
+				Map<String,Object> map = params.get(i);
+				sql.append(" and " + map.get("name") + " " + map.get("rela") + " " + map.get("value") + " ");
+			}
+		}
+
+		PreparedStatement ptmt = connection.prepareStatement(sql.toString());
+		ResultSet teachers = ptmt.executeQuery();
+		
+		while(teachers.next()) {
+			Teacher T = new Teacher();
+			T.setId(teachers.getInt("id"));
+			T.setName(teachers.getString("name"));
+			T.setSex(teachers.getString("sex"));
+			T.setBirthday(teachers.getDate("birthday"));
+			T.setSalary(teachers.getFloat("salary"));
+			T.setCollege(teachers.getString("college"));
+			T.setMajor(teachers.getString("major"));
+			result.add(T);
+		}
+		return result;
 	}
 }

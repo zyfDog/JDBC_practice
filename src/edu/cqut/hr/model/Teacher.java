@@ -82,4 +82,12 @@ public class Teacher {
 		this.major = major;
 	}
 
+	@Override
+	public String toString() {
+		return "Teacher [id=" + id + ", name=" + name + ", sex=" + sex + ", birthday=" + birthday + ", salary=" + salary
+				+ ", college=" + college + ", major=" + major + "]";
+	}
+	
+	
+
 }

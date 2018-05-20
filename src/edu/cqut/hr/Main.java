@@ -15,21 +15,24 @@ public class Main {
     			TeacherView.queryAll();
     			break;
     		case 2 :
-    			TeacherView.add();
+    			TeacherView.get();
     			break;
     		case 3 :
-    			TeacherView.update();
+    			TeacherView.add();
     			break;
     		case 4 :
-    			TeacherView.delete();
+    			TeacherView.update();
     			break;
     		case 5 :
-    			TeacherView.exit();
+    			TeacherView.delete();
+    			break;
+    		case 6 :
+    			TeacherView.query();
     			break;
     		default:
 				break;
     		}
-    		if(command == 5)
+    		if(command == 7)
     			break;
     	}
 	}
