@@ -72,7 +72,7 @@ public class View {
 		Integer deleteId = scanner.nextInt();
 		T = TeacherDao.getTeacherDao().get(deleteId);
 		
-		System.out.printf("所需删除教职工信息为:（%d, %s, %f），是否删除（Y/N）?\n"
+		System.out.printf("所需删除教职工信息为:（%d, %s, %.2f），是否删除（Y/N）?\n"
 				,T.getId(),T.getName(),T.getSalary());
 		System.out.print("请输入：Y(N)  ");
 		
@@ -119,7 +119,7 @@ public class View {
 		List<Teacher> result = TeacherDao.getTeacherDao().queryAll();
 		
 		System.out.println("全体教职工信息如下：");
-		System.out.println("id   name   sex   birthday       salary   college     major   ");
+		System.out.println("id   name   sex    birthday       salary   college      major   ");
 		for(int i = 0; i < result.size(); i++){
 			Teacher T = result.get(i);
 			
@@ -183,7 +183,7 @@ public class View {
 	    params.add(param);
 	    
 	    teachers = TeacherDao.getTeacherDao().query(params);
-	    System.out.println("id   name   sex   birthday       salary   college     major   ");
+	    System.out.println("id   name   sex    birthday       salary   college      major   ");
 		for(int i = 0; i < teachers.size(); i++){
 			Teacher T = teachers.get(i);
 			System.out.printf("%-4d %-13s %-13s %-14tF %-8.2f %-20s %-5s\n", 
